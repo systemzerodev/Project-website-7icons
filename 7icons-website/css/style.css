@@ -1,14 +1,21 @@
+/* =================================
+ROOT VARIABLES
+================================= */
+
 :root {
   --bg-main: #0f0f0f;
   --bg-header: #111;
   --bg-search: #1e1e1e;
 
   --text-main: #ffffff;
-  --text-secondary: #aaa;
+  --text-secondary: #aaaaaa;
 
   --accent: #ff4d6d;
-  --caret: #ff4d6d;
 }
+
+/* =================================
+RESET
+================================= */
 
 *,
 *::before,
@@ -18,12 +25,21 @@
   padding: 0;
 }
 
+/* =================================
+BODY
+================================= */
+
 body {
   font-family: Arial, sans-serif;
   line-height: 1.5;
+
   background: var(--bg-main);
   color: var(--text-main);
 }
+
+/* =================================
+CONTAINER
+================================= */
 
 .container {
   max-width: 1200px;
@@ -31,88 +47,87 @@ body {
   padding: 0 20px;
 }
 
+/* =================================
+HEADER
+================================= */
+
+header {
+  background: var(--bg-header);
+  padding: 20px 0;
+}
+
+header .container {
+  display: grid;
+
+  grid-template-columns: auto 1fr auto auto auto;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+/* =================================
+LOGO
+================================= */
+
 .logo h1 {
   font-size: 24px;
   font-weight: bold;
 }
 
-header {
-  padding: 20px 0;
-  background: var(--bg-header);
-  color: var(--text-main);
-}
-
-header .container {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 20px;
-}
-
-/* SEARCH */
+/* =================================
+SEARCH BAR
+================================= */
 
 .search {
   position: relative;
-  width: 100%;
 }
 
 .search input {
   width: 100%;
-  padding: 10px 15px 10px 40px;
-  border-radius: 30px;
-  border: none;
-  background: var(--bg-search);
-  color: var(--text-main);
-  font-size: 14px;
-  outline: none;
 
-  transition:
-    background 0.25s ease,
-    box-shadow 0.25s ease;
+  padding: 10px 15px 10px 40px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: var(--bg-search);
+
+  color: var(--text-main);
+
+  font-size: 14px;
+
+  outline: none;
 }
 
 .search input::placeholder {
   color: var(--text-secondary);
 }
 
-.search input:focus {
-  caret-color: var(--accent);
-  background: #2a2a2a;
-  box-shadow: 0 0 0 2px #ff4d6d33;
-}
-
-.search input:focus-visible {
-  outline: none;
-}
-
 .search button {
   position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  color: var(--text-secondary);
-  opacity: 0.8;
-}
 
-.search svg {
-  width: 18px;
-  height: 18px;
-  pointer-events: none;
+  left: 12px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  color: var(--text-secondary);
 }
 
 .search button:hover {
   color: var(--accent);
-  opacity: 1;
 }
 
-.search input:hover {
-  background: #252525;
-}
-
-/* NAV */
+/* =================================
+NAVIGATION
+================================= */
 
 nav {
   display: flex;
@@ -122,52 +137,47 @@ nav {
 
 nav ul {
   list-style: none;
+
   display: flex;
+
   gap: 20px;
 }
 
 nav a {
   text-decoration: none;
+
   color: var(--text-main);
-  padding: 8px 10px;
-  transition: color 0.2s ease;
+
+  transition: color 0.25s;
 }
 
 nav a:hover {
   color: var(--accent);
 }
 
-/* THEME TOGGLE */
+/* =================================
+THEME TOGGLE
+================================= */
 
 .theme-toggle {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .theme-icon {
   font-size: 14px;
-  opacity: 0.7;
 }
 
-/* LIGHT MODE */
-
-.light-mode {
-  --bg-main: #ffffff;
-  --bg-header: #f5f5f5;
-  --bg-search: #eeeeee;
-
-  --text-main: #111111;
-  --text-secondary: #555;
-}
-
-/* SWITCH */
+/* =================================
+SWITCH
+================================= */
 
 .switch {
   position: relative;
-  display: inline-block;
   width: 42px;
   height: 22px;
+  display: inline-block;
 }
 
 .switch input {
@@ -178,22 +188,33 @@ nav a:hover {
 
 .slider {
   position: absolute;
-  cursor: pointer;
+
   inset: 0;
+
   background: #444;
+
   border-radius: 34px;
+
+  cursor: pointer;
+
   transition: 0.3s;
 }
 
 .slider::before {
   content: "";
+
   position: absolute;
+
   height: 16px;
   width: 16px;
+
   left: 3px;
   bottom: 3px;
+
   background: white;
+
   border-radius: 50%;
+
   transition: 0.3s;
 }
 
@@ -203,4 +224,178 @@ nav a:hover {
 
 .switch input:checked + .slider::before {
   transform: translateX(20px);
+}
+
+/* =================================
+HAMBURGER
+================================= */
+
+.menu-toggle {
+  display: none;
+
+  width: 28px;
+  height: 22px;
+
+  position: relative;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  position: absolute;
+
+  width: 100%;
+  height: 3px;
+
+  background: var(--text-main);
+
+  left: 0;
+
+  transition: 0.3s;
+}
+
+.menu-toggle span:nth-child(1) {
+  top: 0;
+}
+
+.menu-toggle span:nth-child(2) {
+  top: 9px;
+}
+
+.menu-toggle span:nth-child(3) {
+  bottom: 0;
+}
+
+/* hamburger animation */
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 9px;
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  bottom: 9px;
+}
+
+/* =================================
+HERO SECTION
+================================= */
+
+.hero {
+  padding: 120px 0;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 30px;
+
+  color: var(--text-secondary);
+}
+
+.hero-button {
+  display: inline-block;
+
+  padding: 12px 28px;
+
+  border-radius: 30px;
+
+  background: var(--accent);
+
+  color: white;
+
+  text-decoration: none;
+
+  font-weight: bold;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 90;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+}
+
+/* =================================
+MOBILE MENU
+================================= */
+
+@media (max-width: 768px) {
+  header .container {
+    grid-template-columns: auto auto;
+  }
+
+  .search {
+    display: none;
+  }
+
+  nav {
+    position: fixed;
+
+    top: 0;
+    right: -260px;
+
+    width: 260px;
+    height: 100vh;
+
+    background: var(--bg-header);
+
+    padding: 80px 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: right 0.35s ease;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  nav.menu-open {
+    right: 0;
+  }
+
+  .menu-toggle {
+    display: block;
+    justify-self: end;
+  }
+}
+
+/* =================================
+LIGHT MODE
+================================= */
+
+.light-mode {
+  --bg-main: #ffffff;
+  --bg-header: #f5f5f5;
+  --bg-search: #eeeeee;
+
+  --text-main: #111;
+  --text-secondary: #555;
 }

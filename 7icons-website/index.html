@@ -28,7 +28,7 @@
             <input
               type="text"
               name="search"
-              placeholder="Search..."
+              placeholder="Search ..."
               aria-label="Search" />
 
             <button type="submit" aria-label="Search">
@@ -43,7 +43,7 @@
         </div>
 
         <!-- NAVIGATION -->
-        <nav>
+        <nav id="navMenu">
           <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">Members</a></li>
@@ -58,20 +58,43 @@
 
             <label class="switch">
               <input type="checkbox" id="themeToggle" />
-
               <span class="slider"></span>
             </label>
 
             <span class="theme-icon">☀</span>
           </div>
         </nav>
+
+        <!-- HAMBURGER -->
+        <button class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
-    <!-- MAIN CONTENT (nanti kita isi) -->
-    <main></main>
+    <div class="menu-overlay"></div>
 
-    <!-- FOOTER (nanti kita buat) -->
+    <!-- MAIN CONTENT -->
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <h2>Welcome to 7ICONS Indonesia</h2>
+
+            <p>
+              Fan website dedicated to the Indonesian girl group 7ICONS.
+              Discover members, gallery, and the latest news.
+            </p>
+
+            <a href="#" class="hero-button"> Explore Members </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
     <footer></footer>
 
     <!-- JAVASCRIPT -->
