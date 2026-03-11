@@ -54,6 +54,8 @@ HEADER
 header {
   background: var(--bg-header);
   padding: 20px 0;
+  position: relative;
+  z-index: 1000;
 }
 
 header .container {
@@ -81,6 +83,7 @@ SEARCH BAR
 
 .search {
   position: relative;
+  width: 100%;
 }
 
 .search input {
@@ -104,6 +107,10 @@ SEARCH BAR
   color: var(--text-secondary);
 }
 
+.search input:focus {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
 .search button {
   position: absolute;
 
@@ -119,6 +126,7 @@ SEARCH BAR
   cursor: pointer;
 
   color: var(--text-secondary);
+  transition: 0.25s ease;
 }
 
 .search button:hover {
@@ -377,18 +385,30 @@ HERO SECTION
 .hero-content {
   max-width: 700px;
   margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+
+  animation: heroFade 0.9s ease forwards;
 }
 
 .hero h2 {
   font-size: 36px;
   margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    0 6px 12px rgba(0, 0, 0, 0.25);
+  animation: heroFade 0.8s ease forwards;
 }
 
 .hero p {
   max-width: 600px;
   margin: 0 auto 30px;
-
-  color: var(--text-secondary);
+  font-size: 18px;
+  color: var(--text-main);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  animation: heroFade 0.8s ease forwards;
+  animation-delay: 0.2s;
 }
 
 .hero-button {
@@ -407,10 +427,14 @@ HERO SECTION
   font-weight: bold;
 
   transition: 0.25s ease;
+
+  animation: heroFade 0.8s ease forwards;
+  animation-delay: 0.4s;
 }
 
 .hero-button:hover {
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .menu-overlay {
@@ -521,12 +545,32 @@ MOBILE MENU
     transition-delay: 0.5s;
   }
 
+  nav.menu-open ul li:nth-of-type(6) {
+    transition-delay: 0.6s;
+  }
+
   .hero {
-    padding: 80px 0;
+    padding: 100px 0;
   }
 
   .hero h2 {
     font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+}
+
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
