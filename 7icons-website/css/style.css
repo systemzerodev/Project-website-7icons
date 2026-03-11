@@ -126,6 +126,71 @@ SEARCH BAR
 }
 
 /* =================================
+SEARCH MOBILE (HAMBURGER MENU)
+================================= */
+
+.search-mobile {
+  display: none;
+  width: 100%;
+  margin-top: 30px;
+}
+
+/* Search Box Container */
+
+.search-mobile-wrapper {
+  position: relative;
+  width: 100%;
+  background: var(--bg-search);
+  border-radius: 30px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Search Icon */
+
+.search-icon {
+  color: var(--text-secondary);
+  margin-right: 10px;
+  flex-shrink: 0;
+  transition: color 0.25s ease;
+}
+
+/* Input Field */
+
+.search-mobile-wrapper input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  caret-color: var(--accent);
+  font-size: 14px;
+  outline: none;
+}
+
+/* Placeholder */
+
+.search-mobile-wrapper input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Focus Effect */
+
+.search-mobile-wrapper:focus-within {
+  background: #2a2a2a2a;
+  box-shadow: 0 0 0 2px rgba(255, 77, 109, 0.25);
+}
+
+/* Icon Change Color When Focus */
+
+.search-mobile-wrapper:focus-within .search-icon {
+  color: var(--accent);
+}
+
+/* =================================
 NAVIGATION
 ================================= */
 
@@ -295,6 +360,11 @@ HERO SECTION
   text-align: center;
 }
 
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 .hero h2 {
   font-size: 36px;
   margin-bottom: 20px;
@@ -321,6 +391,12 @@ HERO SECTION
   text-decoration: none;
 
   font-weight: bold;
+
+  transition: 0.25s ease;
+}
+
+.hero-button:hover {
+  transform: translateY(-2px);
 }
 
 .menu-overlay {
@@ -384,6 +460,59 @@ MOBILE MENU
   .menu-toggle {
     display: block;
     justify-self: end;
+  }
+
+  .search-mobile {
+    display: block;
+  }
+
+  .search {
+    display: none;
+  }
+
+  nav ul li {
+    opacity: 0;
+    transform: translateX(50px) scale(0.98);
+    transition:
+      opacity 0.6s cubic-bezier(0.25, 0.8, 0.25, 1),
+      transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  /* ketika hamburger dibuka */
+
+  nav.menu-open ul li {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+
+  /* delay animasi */
+
+  nav.menu-open ul li:nth-of-type(1) {
+    transition-delay: 0.1s;
+  }
+
+  nav.menu-open ul li:nth-of-type(2) {
+    transition-delay: 0.2s;
+  }
+
+  nav.menu-open ul li:nth-of-type(3) {
+    transition-delay: 0.3s;
+  }
+
+  nav.menu-open ul li:nth-of-type(4) {
+    transition-delay: 0.4s;
+  }
+
+  nav.menu-open ul li:nth-of-type(5) {
+    transition-delay: 0.5s;
+  }
+
+  .hero {
+    padding: 80px 0;
+  }
+
+  .hero h2 {
+    font-size: 28px;
   }
 }
 
