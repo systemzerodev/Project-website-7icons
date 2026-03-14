@@ -486,9 +486,9 @@ GRID LAYOUT
   margin: auto;
 }
 
-/* ===============================
+/* =================================
 MEMBER CARD
-=============================== */
+================================= */
 
 .member-card {
   display: flex;
@@ -498,9 +498,20 @@ MEMBER CARD
   align-items: center;
 
   text-align: center;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.3s ease;
+
+  opacity: 0;
+  transform: translateY(20px);
+
+  cursor: pointer;
 }
 
-/* IMAGE */
+/* =================================
+IMAGE
+================================= */
 
 .member-card img {
   width: 160px;
@@ -514,9 +525,15 @@ MEMBER CARD
   margin-bottom: 12px;
 
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
-/* NAME */
+/* =================================
+NAME
+================================= */
 
 .member-card h3 {
   font-size: 18px;
@@ -524,9 +541,9 @@ MEMBER CARD
   margin-bottom: 6px;
 }
 
-/* ===============================
+/* =================================
 USERNAME + IG ICON
-=============================== */
+================================= */
 
 .member-username {
   display: flex;
@@ -552,20 +569,132 @@ USERNAME + IG ICON
   font-weight: 500;
 }
 
-/* ===============================
+/* =================================
+MEMBER DETAIL
+================================= */
+
+.member-detail {
+  max-height: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transition:
+    max-height 0.4s ease,
+    opacity 0.3s ease;
+
+  text-align: center;
+
+  margin-top: 8px;
+
+  font-size: 13px;
+
+  color: var(--text-secondary);
+}
+
+.member-card.active .member-detail {
+  max-height: 120px;
+
+  opacity: 1;
+}
+
+.member-bio {
+  margin-top: 4px;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+}
+
+/* =================================
 LAST MEMBER CENTER (DESKTOP)
-=============================== */
+================================= */
 
 .member-last {
   grid-column: 2;
 }
 
-/* ===============================
+/* =================================
 HOVER
-=============================== */
+================================= */
+
+.member-card:hover {
+  transform: translateY(-6px);
+}
 
 .member-card:hover .member-username {
   color: var(--accent);
+}
+
+.member-card:hover img {
+  transform: scale(1.05);
+
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* =================================
+FOCUS EFFECT
+================================= */
+
+.member-grid:hover .member-card {
+  opacity: 0.45;
+}
+
+.member-grid:hover .member-card:hover {
+  opacity: 1;
+}
+
+/* =================================
+SCROLL ANIMATION
+================================= */
+
+.member-card.show {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* stagger animation */
+
+.member-card:nth-child(1) {
+  transition-delay: 0.05s;
+}
+
+.member-card:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.member-card:nth-child(3) {
+  transition-delay: 0.15s;
+}
+
+.member-card:nth-child(4) {
+  transition-delay: 0.2s;
+}
+
+.member-card:nth-child(5) {
+  transition-delay: 0.25s;
+}
+
+.member-card:nth-child(6) {
+  transition-delay: 0.3s;
+}
+
+.member-card:nth-child(7) {
+  transition-delay: 0.35s;
+}
+
+.member-card:nth-child(8) {
+  transition-delay: 0.4s;
+}
+
+.member-card:nth-child(9) {
+  transition-delay: 0.45s;
+}
+
+.member-card:nth-child(10) {
+  transition-delay: 0.5s;
 }
 
 /* =================================

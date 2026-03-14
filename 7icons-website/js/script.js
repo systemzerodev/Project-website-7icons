@@ -1,11 +1,10 @@
-/* ================================
-   DARK MODE TOGGLE
-================================ */
+/* =================================
+DARK MODE TOGGLE
+================================= */
 
 const themeToggle = document.getElementById("themeToggle");
 
 if (themeToggle) {
-  // cek theme yang tersimpan
   const savedTheme = localStorage.getItem("theme");
 
   if (savedTheme === "light") {
@@ -24,16 +23,15 @@ if (themeToggle) {
   });
 }
 
-/* ================================
-   HAMBURGER MENU
-================================ */
+/* =================================
+HAMBURGER MENU
+================================= */
 
 const menuToggle = document.getElementById("menuToggle");
 const overlay = document.querySelector(".menu-overlay");
 const navMenu = document.querySelector("nav");
 
 if (menuToggle && navMenu && overlay) {
-  // klik hamburger
   menuToggle.addEventListener("click", () => {
     navMenu.classList.toggle("menu-open");
 
@@ -42,7 +40,6 @@ if (menuToggle && navMenu && overlay) {
     overlay.classList.toggle("active");
   });
 
-  // klik overlay menutup menu
   overlay.addEventListener("click", () => {
     navMenu.classList.remove("menu-open");
 
@@ -52,17 +49,21 @@ if (menuToggle && navMenu && overlay) {
   });
 }
 
-/* ================================
-   Click Outside menu to close
-================================ */
+/* =================================
+CLICK OUTSIDE MENU
+================================= */
 
 document.addEventListener("click", (e) => {
-  const clickInsideMenu = navMenu.contains(e.target);
-  const clickOnButton = menuToggle.contains(e.target);
+  const clickInsideMenu = navMenu && navMenu.contains(e.target);
 
-  if (!clickInsideMenu && !clickOnButton) {
-    navMenu.classList.remove("menu-open");
-    menuToggle.classList.remove("active");
+  const clickOnButton = menuToggle && menuToggle.contains(e.target);
+
+  if (navMenu && menuToggle) {
+    if (!clickInsideMenu && !clickOnButton) {
+      navMenu.classList.remove("menu-open");
+
+      menuToggle.classList.remove("active");
+    }
   }
 });
 
@@ -74,7 +75,45 @@ const navLinks = document.querySelectorAll("nav a");
 
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
-    navMenu.classList.remove("menu-open");
-    menuToggle.classList.remove("active");
+    if (navMenu && menuToggle) {
+      navMenu.classList.remove("menu-open");
+
+      menuToggle.classList.remove("active");
+    }
+  });
+});
+
+/* =================================
+MEMBER SCROLL ANIMATION
+================================= */
+
+const memberCards = document.querySelectorAll(".member-card");
+
+if (memberCards.length > 0) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    },
+    {
+      threshold: 0.2,
+    },
+  );
+
+  memberCards.forEach((card) => {
+    observer.observe(card);
+  });
+}
+
+/* =================================
+MEMBER DETAIL TOGGLE
+================================= */
+
+memberCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    card.classList.toggle("active");
   });
 });
