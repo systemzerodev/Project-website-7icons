@@ -28,44 +28,20 @@ HAMBURGER MENU
 ================================= */
 
 const menuToggle = document.getElementById("menuToggle");
-const overlay = document.querySelector(".menu-overlay");
 const navMenu = document.querySelector("nav");
+const overlay = document.querySelector(".menu-overlay");
 
-if (menuToggle && navMenu && overlay) {
+if (menuToggle && navMenu) {
   menuToggle.addEventListener("click", () => {
     navMenu.classList.toggle("menu-open");
 
     menuToggle.classList.toggle("active");
 
-    overlay.classList.toggle("active");
-  });
-
-  overlay.addEventListener("click", () => {
-    navMenu.classList.remove("menu-open");
-
-    menuToggle.classList.remove("active");
-
-    overlay.classList.remove("active");
+    if (overlay) {
+      overlay.classList.toggle("active");
+    }
   });
 }
-
-/* =================================
-CLICK OUTSIDE MENU
-================================= */
-
-document.addEventListener("click", (e) => {
-  const clickInsideMenu = navMenu && navMenu.contains(e.target);
-
-  const clickOnButton = menuToggle && menuToggle.contains(e.target);
-
-  if (navMenu && menuToggle) {
-    if (!clickInsideMenu && !clickOnButton) {
-      navMenu.classList.remove("menu-open");
-
-      menuToggle.classList.remove("active");
-    }
-  }
-});
 
 /* =================================
 CLOSE MENU WHEN LINK CLICKED
@@ -109,11 +85,37 @@ if (memberCards.length > 0) {
 }
 
 /* =================================
-MEMBER DETAIL TOGGLE
+MEMBER DETAIL ACCORDION
 ================================= */
 
 memberCards.forEach((card) => {
   card.addEventListener("click", () => {
-    card.classList.toggle("active");
+    const isActive = card.classList.contains("active");
+
+    /* tutup semua card */
+
+    memberCards.forEach((c) => {
+      c.classList.remove("active");
+    });
+
+    /* buka card yang diklik */
+
+    if (!isActive) {
+      card.classList.add("active");
+    }
   });
+});
+
+/* =================================
+CLOSE MEMBER DETAIL WHEN CLICK OUTSIDE
+================================= */
+
+document.addEventListener("click", (e) => {
+  const clickedCard = e.target.closest(".member-card");
+
+  if (!clickedCard) {
+    memberCards.forEach((card) => {
+      card.classList.remove("active");
+    });
+  }
 });
