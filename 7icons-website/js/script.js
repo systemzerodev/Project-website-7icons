@@ -119,3 +119,36 @@ document.addEventListener("click", (e) => {
     });
   }
 });
+
+/* =================================
+GALLERY LIGHTBOX
+================================= */
+
+const galleryImages = document.querySelectorAll(".gallery-item img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxClose = document.querySelector(".lightbox-close");
+
+/* open lightbox */
+
+galleryImages.forEach((img) => {
+  img.addEventListener("click", () => {
+    lightbox.classList.add("active");
+
+    lightboxImg.src = img.src;
+  });
+});
+
+/* close button */
+
+lightboxClose.addEventListener("click", () => {
+  lightbox.classList.remove("active");
+});
+
+/* click outside image */
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target !== lightboxImg) {
+    lightbox.classList.remove("active");
+  }
+});
